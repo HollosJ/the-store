@@ -7,7 +7,7 @@ import Error from "./components/Error";
 import React, {useState, useEffect} from 'react';
 
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Route,
   } from "react-router-dom"; 
@@ -65,7 +65,7 @@ const App = () => {
   const handleBasketClear = () => {
     setBasket([])
   };
-
+  
   const handleError = () => {
     setError(true);
     setTimeout(() => {
@@ -73,27 +73,24 @@ const App = () => {
     }, 5000)
   }
  
-  
-
   return (
     <Router>
         <div className="App">
           <Nav className="Nav" clear={handleBasketClear} delete={handleBasketRemove} count={Object.keys(basket).length} items={basket}/>
           <div className="container content">
             <Switch>
-              <Route path="/" exact render={
+              <Route path="/wishlist" component={Wishlist} />
+              <Route path="/items/:id" component={Item} />
+              <Route path="/" render={
                 () => <Store 
                 addToBasket={handleBasketAdd}
                 addToWishlist={handleWishlistAdd}/>
               }/>
-              <Route path="/wishlist" component={Wishlist} />
-              <Route path="/items/:id" component={Item} />
             </Switch>
           </div>
           {error ? <Error text={"Item already in wishlist!"}/> : null}
         </div>
     </Router>
-    
   );
 }
 
