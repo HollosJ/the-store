@@ -28,7 +28,8 @@ $fw-sm: 200;
 $fw-md: 400;
 $fw-lg: 600;
 $fw-xl: 800;
-//resets
+
+//RESETS
 body {
   background: $white;
   scrollbar-gutter: stable both-edges;
@@ -53,7 +54,7 @@ svg {
   }
 }
 
-//reusables
+//REUSABLES
 .container {
   margin: 0 auto;
   width: 100%;
@@ -89,9 +90,7 @@ svg {
   justify-items: center;
 }
 
-.clr-nl {
-  color: $navy-light;
-}
+//ELEMENTS
 
 //navbar
 .nav {
@@ -241,6 +240,7 @@ svg {
 
     &-price {
       height: 50%;
+      color: $navy-light;
       font-size: 2rem;
       font-weight: 900;
       padding-bottom: 1rem;
@@ -298,6 +298,24 @@ svg {
   animation-duration: 300ms;
 }
 
+.spinner {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+
+  border-top: 5px solid $primary;
+  border-right: 5px solid $primary;
+  border-bottom: 5px solid $primary;
+
+  animation-name: spinning;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 //BREAKPOINTS
 //sm
 @media (min-width: 640px) {
@@ -332,24 +350,8 @@ svg {
 }
 
 //ANIMATIONS
-.spinner {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0);
 
-  border-top: 5px solid $primary;
-  border-right: 5px solid $primary;
-  border-bottom: 5px solid $primary;
-
-  animation-name: spinning;
-  animation-duration: 500ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
+//spinner
 @keyframes spinning {
   from {
     transform: rotate(0);
@@ -359,6 +361,7 @@ svg {
   }
 }
 
+//popup animation
 @keyframes rise {
   from {
     opacity: 0;

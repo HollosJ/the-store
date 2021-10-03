@@ -10,7 +10,7 @@ const ItemCard = (props) => {
             </div>
             <div className="card__info">
                 <Link to={`/items/${props.id}`} className="card__info-name fw-sm">{props.name.split(" ").slice(0,7).join(" ")}...</Link>
-                <span className="card__info-price clr-nl">£{props.price.toFixed(2)}</span>     
+                <span className="card__info-price">£{props.price.toFixed(2)}</span>     
             </div>
 
             <div className="card__btns">
