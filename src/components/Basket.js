@@ -14,7 +14,7 @@ const Basket = (props) => {
                     </div>
             }))
             : "Basket empty!"}
-            {props.items.length > 3
+            {props.items.length > 0
             ? <div className="btn btn--secondary">
                 See full basket&nbsp;<FaShoppingBasket />
             </div>
