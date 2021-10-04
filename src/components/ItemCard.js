@@ -17,8 +17,14 @@ const ItemCard = (props) => {
                 <div className="addToBasket btn btn--primary"  onClick={() => props.addToBasket(props.id)}>
                     Add to basket&nbsp;<FaShoppingBasket />
                 </div>
-                <div className="addToWishlist btn btn--secondary" onClick={() => props.addToWishlist(props.id)}>
-                    {props.inWishList ? <FaHeart /> : <FaRegHeart />}
+
+                <div className="addToWishlist btn btn--secondary" onClick={
+                    props.inWishlist 
+                    ? () => props.removeFromWishlist(props.id) 
+                    : () => props.addToWishlist(props.id)}>
+                    {props.inWishlist 
+                    ? <FaHeart className="addToWishlist--filled" /> 
+                    : <FaRegHeart />}
                 </div>
             </div>
         </div>

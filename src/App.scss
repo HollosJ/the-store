@@ -261,6 +261,16 @@ svg {
     .addToWishlist {
       width: 20%;
       border-radius: 0 0 0.25rem 0;
+
+      &--filled {
+        color: $red;
+      }
+
+      &:active {
+        svg {
+          transform: scale(1.25);
+        }
+      }
     }
   }
 }
@@ -282,20 +292,6 @@ svg {
     grid-row: 2;
     max-width: 100%;
   }
-}
-
-//error popup
-.error {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  padding: 1rem;
-  background: $red;
-  color: $white;
-  border-radius: $br-md;
-
-  animation-name: rise;
-  animation-duration: 300ms;
 }
 
 .spinner {

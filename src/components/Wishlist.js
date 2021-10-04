@@ -1,19 +1,12 @@
-import React, {useEffect, useState} from 'react'
-import ItemCard from "./ItemCard"
+import React from 'react'
 
 const Wishlist = (props) => {
-    const [items,setItems] = useState([]);
-
-    useEffect(() => {
-        setItems(JSON.parse(localStorage.getItem("wishlist")));
-    },[])
-
     return (
         <>
         <h1 className="fw-xl clr-nl">Wishlist</h1>
         <div className="grid">
-            {items.map((item, key) => {
-                return <div key={key}>{item.title}</div>
+            {props.items.map((item, key) => {
+                return <div key={key} onClick={() => props.removeFromWishlist(item)}>{item.title}</div>
             })}
         </div>
         </>
