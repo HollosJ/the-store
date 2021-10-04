@@ -31,6 +31,7 @@ const App = () => {
       })
       setItems(data);
     });
+    // eslint-disable-next-line
   },[])
 
   //init basket & wishlist from localStorage
