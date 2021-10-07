@@ -15,13 +15,10 @@ const Basket = (props) => {
             }))
             : "Basket empty!"}
             {props.items.length > 0
-            ? <div className="btn btn--secondary">
-                See full basket&nbsp;<FaShoppingBasket />
-            </div>
-            : null}
+                && <div className="btn btn--secondary">See full basket&nbsp;<FaShoppingBasket /></div>}
             {props.items.length > 0 
-            ? <div className="btn btn--primary" onClick={props.clear}>Clear basket</div>
-            : null}
+                && <div className="btn btn--primary" onClick={props.clear}>Clear basket</div>
+            }
             
         </div>
     )

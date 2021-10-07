@@ -12,8 +12,7 @@ const ItemCard = (props) => {
                 <Link to={`/items/${props.id}`} className="card__info-name fw-sm">
                     {props.name.split(" ").slice(0,5).join(" ")}
                     {props.name.split(" ").length > 5 
-                    ? "..." 
-                    : null}
+                    && "..."}
                 </Link>
                 <span className="card__info-price">£{props.price.toFixed(2)}</span>     
             </div>

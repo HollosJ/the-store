@@ -39,8 +39,8 @@ const Nav = (props) => {
                 </div>
 
                 {open
-                ? <Basket items={props.items} delete={props.delete} clear={props.clear}/>
-                : null }
+                && <Basket items={props.items} delete={props.delete} clear={props.clear}/>
+                }
             </div>
         </div>
     )
