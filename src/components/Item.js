@@ -5,11 +5,14 @@ const Item = ({match}) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/${match.params.id}`)
-            .then(res=>res.json())
-            .then(json=>setItem(json))
+        const fetchItemData = async () => {
+            let res = await fetch(`https://fakestoreapi.com/products/${match.params.id}`)
+            res = await res.json()
+            setItem(res)
             setLoading(false)
-    },[match.params.id])
+        }
+        fetchItemData()
+    },[])
 
     return loading ? <div>loading...</div> : 
     <div className="item">
