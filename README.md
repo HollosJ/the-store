@@ -7,6 +7,10 @@ The site utilizes React Router DOM for quick responsiveness.
 
 ### Features:
 
+#### Store page
+
+- User can filter items based on category, i.e. electronics, clothing etc.
+
 #### Cart
 
 - Users can add items to cart, remove items from the cart.
