@@ -13,7 +13,9 @@ const Store = (props) => {
     }
 
     return (
-        <>
+        <>  
+            {/* Only show dropdown if items exist */}
+            {props.items.length > 0 &&
             <select name="" id="" className="filters" onChange={(e) => setCat(e.target.value)}>
                 <option value="all">ALL</option>
                 {categories.map((item, key) => 
@@ -22,6 +24,7 @@ const Store = (props) => {
                     })
                 }
             </select>
+            }
             <div className="grid">
             {getItemsInCategory().length > 0 
             ? (getItemsInCategory().map((item) => {
