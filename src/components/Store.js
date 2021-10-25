@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import ItemCard from "./ItemCard"
+import Item from "./Item"
 
 const Store = (props) => {
     const categories = ["electronics","jewelery","men's clothing","women's clothing"]
@@ -15,7 +15,7 @@ const Store = (props) => {
     return (
         <>  
             {/* Only show dropdown if items exist */}
-            {props.items.length > 0 &&
+            {/* {props.items.length > 0 &&
             <select name="" id="" className="filters" onChange={(e) => setCat(e.target.value)}>
                 <option value="all">ALL</option>
                 {categories.map((item, key) => 
@@ -24,12 +24,13 @@ const Store = (props) => {
                     })
                 }
             </select>
-            }
+            } */}
             <div className="grid">
             {getItemsInCategory().length > 0 
             ? (getItemsInCategory().map((item) => {
-                return <ItemCard
+                return <Item
                 key={item.id}
+                item={item}
                 id={item.id}
                 name={item.title}
                 img={item.image}

@@ -1,25 +1,55 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
+import { FaHeart, FaRegHeart, FaShoppingBasket } from "react-icons/fa"
+import Modal from "./Modal"
 
-const Item = ({match}) => {
-    const [item, setItem] = useState({})
-    const [loading, setLoading] = useState(true)
+const Item = (props) => {
+    const [modal, setModal] = useState(false);
 
-    useEffect(() => {
-        const fetchItemData = async () => {
-            let res = await fetch(`https://fakestoreapi.com/products/${match.params.id}`)
-            res = await res.json()
-            setItem(res)
-            setLoading(false)
-        }
-        fetchItemData()
-    },[])
+    const toggleModalShow = () => {
+        setModal(!modal)
+    }
 
-    return loading ? <div>loading...</div> : 
-    <div className="item">
-        <img className="item__img" src={item.image} alt=""/>
-        <h1 className="item__title">{item.title}</h1>
-        <p className="item__desc">{item.description}</p>
-    </div>
+    return (
+        <>
+            <div className="card">
+                {/* Item image and information */}
+                <div className="card__img">
+                    <img src={props.img} alt={props.name} />
+                </div>
+                <div className="card__info">
+                    <div className="card__info-name" onClick={toggleModalShow}>
+                        {props.name.split(" ").slice(0,5).join(" ")}
+                        {props.name.split(" ").length > 5 
+                        && "..."}
+                    </div>
+                    <span className="card__info-price">£{props.price.toFixed(2)}</span>     
+                </div>
+                {/* Buttons */}
+                <div className="card__btns">
+                    <div className="addToBasket btn btn--primary"  onClick={() => props.addToBasket(props.id, 1)}>
+                        Add to basket&nbsp;<FaShoppingBasket />
+                    </div>
+
+                    <div className="addToWishlist btn btn--secondary" onClick={
+                        props.inWishlist 
+                        ? () => props.removeFromWishlist(props.id) 
+                        : () => props.addToWishlist(props.id)}>
+                        {props.inWishlist 
+                        ? <FaHeart className="addToWishlist--filled" /> 
+                        : <FaRegHeart />}
+                    </div>
+                </div>
+            </div>
+
+            {modal && <Modal
+            addToWishlist={props.addToWishlist}
+            addToBasket={props.addToBasket}
+            inWishlist={props.inWishlist}
+            removeFromWishlist={props.removeFromWishlist}
+            closeModal={toggleModalShow}
+            item={props.item} />}
+        </>
+    )
 }
 
-export default Item
+export default Item;

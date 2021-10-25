@@ -1,7 +1,6 @@
 import './App.scss';
 import Nav from "./components/Nav";
 import Store from "./components/Store";
-import Item from "./components/Item";
 import Wishlist from "./components/Wishlist";
 import React, {useState, useEffect} from 'react';
 
@@ -43,17 +42,17 @@ const App = () => {
   }, [wishlist])
 
   //add to basket
-  const handleBasketAdd = (id) => {
+  const handleBasketAdd = (id, q) => {
     const itemToAdd = items.find(item => item.id === id);
     const newBasket = [...basket]
     let itemInBasket = newBasket.find((item) => id === item.id)
 
     if(itemInBasket) {
-      itemInBasket.qt++
+      itemInBasket.qt += q
     } else {
       itemInBasket = {
         ...itemToAdd,
-        qt: 1,
+        qt: q,
       };
       newBasket.push(itemInBasket);
     }
@@ -108,7 +107,11 @@ const App = () => {
                 removeFromWishlist={handleWishlistRemove}
                 items={wishlist}/>
               } />
-              <Route path="/items/:id" component={Item} />
+              {/* <Route path="/items/:id"
+               component={Item} /> */}
+               {/* <Route path="/items/:id" render={() => {
+                 <Item addToBasket={handleBasketAdd} />
+               }} component={Item}/> */}
               <Route path="/" render={
                 () => <Store 
                 wishlist={wishlist}
