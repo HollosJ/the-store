@@ -3,6 +3,8 @@ import Nav from "./components/Nav";
 import Store from "./components/Store";
 import Wishlist from "./components/Wishlist";
 import React, {useState, useEffect} from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
     HashRouter as Router,
@@ -49,22 +51,26 @@ const App = () => {
 
     if(itemInBasket) {
       itemInBasket.qt += q
+      toast.success(`x${q} ${itemToAdd.title} now in basket`)
+
     } else {
       itemInBasket = {
         ...itemToAdd,
         qt: q,
       };
       newBasket.push(itemInBasket);
+      toast.success(`x${q} ${itemToAdd.title} added to basket!`)
     }
     setBasket(newBasket)
   }
-
+  
   //add to wishlist
   const handleWishlistAdd = (id) => {
     const itemToAdd = items.find(item => item.id === id);
     const newWishlist = [...wishlist]
     const itemInWishlist = newWishlist.find((item) => id === item.id);
-
+    toast.success(`${itemToAdd.title} added to wishlist!`)
+    
     //if not in wishlist, add to wishlist
     if(!itemInWishlist){
       itemToAdd.inWishlist = true;
@@ -72,27 +78,29 @@ const App = () => {
       setWishlist(newWishlist);
     }
   }
-
+  
   //remove specific item from basket
   const handleBasketRemove = (itemToRemove) => {
     setBasket(basket.filter(item => item !== itemToRemove))
+    toast.error(`All ${itemToRemove.title} removed from basket`)
   }
-
+  
   //remove item from wishlist
   const handleWishlistRemove = (id) => {
     setWishlist(wishlist.filter(item => item.id !== id))
+    toast.error(`${items.find(item => item.id === id).title} removed from wishlist`)
     
     //update item state to reflect wishlist state
     let newItems = [...items]
     let idx = newItems.indexOf(newItems.find(item => item.id === id))
     newItems[idx].inWishlist = false
   }
-
+  
   //clear entire basket
   const handleBasketClear = () => {
     setBasket([])
   };
- 
+  
   return (
     <Router>
         <div className="App">
@@ -121,6 +129,9 @@ const App = () => {
                 removeFromWishlist={handleWishlistRemove}/>
               }/>
             </Switch>
+            <ToastContainer 
+            position="bottom-right"
+            autoClose={2000} />
           </div>
         </div>
     </Router>
