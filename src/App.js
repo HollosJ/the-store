@@ -1,4 +1,4 @@
-import './App.scss';
+import './styles/App.scss';
 import Nav from "./components/Nav";
 import Store from "./components/Store";
 import Wishlist from "./components/Wishlist";
