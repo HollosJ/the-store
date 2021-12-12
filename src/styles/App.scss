@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+@import 'variables';
+@import 'reset';
+@import 'reusables';
+@import 'nav';
+@import 'basket';
+@import 'categories';
+@import 'grid';
+@import 'card';
+@import 'modal';
+@import 'spinner';
+
+//BREAKPOINTS
+//sm
+@media (min-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+}
+//md
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  .basket {
+    width: 30rem;
+    transform: translateX(0);
+    left: initial;
+    right: 1rem;
+    box-shadow: $bs-smooth;
+  }
+}
+//lg
+@media (min-width: 1024px) {
+  html {
+    font-size: 17px;
+  }
+}
+//xl
+@media (min-width: 1280px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+//ANIMATIONS
+
+//spinner
+@keyframes spinning {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+//popup animation
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,22 @@
+//RESETS
+body {
+  background: $white;
+  scrollbar-gutter: stable both-edges;
+}
+html {
+  font-size: 14px;
+}
+a {
+  text-decoration: none;
+  color: $black;
+}
+svg {
+  pointer-events: none;
+}
+.App {
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding-top: 5rem;
+}

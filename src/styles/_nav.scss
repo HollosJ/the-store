@@ -1,0 +1,38 @@
+//navbar
+.nav {
+  background: $navy-dark;
+  max-width: 100vw;
+  width: 100%;
+  height: 3.5rem;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $primary;
+
+    .logo-the {
+      font-weight: 200;
+      color: $white;
+    }
+  }
+
+  .container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 1rem;
+  }
+
+  &__links {
+    display: flex;
+
+    .btn__wishlist {
+      margin-right: 1rem;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.filters {
+  font-size: 2rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  border: none;
+  background: $primary;
+  color: $white;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  option {
+    background: $white;
+    color: $navy-dark;
+  }
+}
