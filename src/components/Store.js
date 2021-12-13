@@ -14,16 +14,20 @@ const Store = (props) => {
 
     return (
         <>  
-            {props.items.length > 0 &&
-            <select className="filters" onChange={(e) => setCat(e.target.value)}>
-                <option value="all">ALL</option>
-                {categories.map((item, key) => 
-                    {
-                        return <option key={key} value={item}>{item.toUpperCase()}</option>
-                    })
+            <div className="filter">
+            <div className="container">
+                {props.items.length > 0 &&
+                <select className="filters" onChange={(e) => setCat(e.target.value)}>
+                    <option value="all">ALL</option>
+                    {categories.map((item, key) => 
+                        {
+                            return <option key={key} value={item}>{item.toUpperCase()}</option>
+                        })
+                    }
+                </select>
                 }
-            </select>
-            }
+            </div>
+            </div>
             <div className="grid">
             {getItemsInCategory().length > 0 
             ? (getItemsInCategory().map((item) => {
